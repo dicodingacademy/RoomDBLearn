@@ -1,5 +1,7 @@
 package com.nbs.roomdblearn.database;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -13,7 +15,7 @@ import java.util.List;
 @Dao
 public interface NoteDao {
     @Query("SELECT * FROM note")
-    List<Note> getAllNotes();
+    LiveData<List<Note>> getAllNotes();
 
     @Query("SELECT * FROM note WHERE title LIKE :title LIMIT 1")
     Note getNoteByTitle(String title);
